@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?access_token=whatever&alternatives=false&geometry=polyline&instructions=text
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=0
+      Date:
+      - Thu, 18 Jun 2015 15:39:49 GMT
+      X-Powered-By:
+      - Express
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 e50d9c363ff3bfb00848d1690e10f776.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - 3cBq_RcqSOyGF2X57MZ2lz01bG04Z7P99XvWhW3WyE56FzxN1FPVLg==
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid Access Token"}'
+    http_version: 
+  recorded_at: Thu, 18 Jun 2015 15:39:49 GMT
+recorded_with: VCR 2.9.3

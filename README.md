@@ -20,7 +20,19 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+require "mapbox_directions"
+options = {
+  access_token: "<your_access_token>",
+  mode:         "driving",       # %w(driving cycling walking)
+  origin:       "-122.42,37.78", # lng,lat
+  destination:  "-77.03,38.91",  # lng,lat
+  geometry:     "polyline",      # %w(polyline geojson false)
+  alternatives: false,           # true | false
+  instructions: "text",          # %w(text html)
+}
+MapboxDirections.directions(options)
+```
 
 ## Contributing
 
