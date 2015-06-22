@@ -1,6 +1,12 @@
 # MapboxDirections
 
-TODO: Write a gem description
+[![Build Status](https://travis-ci.org/yonelacort/heroku_autoscaler.svg?branch=master)](https://travis-ci.org/yonelacort/heroku_autoscaler)
+[![Code Climate](https://codeclimate.com/github/allyapp/mapbox_directions/badges/gpa.svg)](https://codeclimate.com/github/allyapp/mapbox_directions)
+
+Ruby wrapper for the MapBox Directions Service.
+
+Here you can find the documentation of the API interface:
+https://www.mapbox.com/developers/api/directions/
 
 ## Installation
 
@@ -33,6 +39,8 @@ options = {
 }
 MapboxDirections.directions(options)
 ```
+
+### Exceptions
 
 ## Contributing
 
