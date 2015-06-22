@@ -1,6 +1,6 @@
 # MapboxDirections
 
-[![Build Status](https://travis-ci.org/yonelacort/heroku_autoscaler.svg?branch=master)](https://travis-ci.org/yonelacort/heroku_autoscaler)
+[![Build Status](https://travis-ci.org/allyapp/mapbox_directions.svg?branch=master)](https://travis-ci.org/allyapp/mapbox_directions)
 [![Code Climate](https://codeclimate.com/github/allyapp/mapbox_directions/badges/gpa.svg)](https://codeclimate.com/github/allyapp/mapbox_directions)
 
 Ruby wrapper for the MapBox Directions Service.
