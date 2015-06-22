@@ -1,5 +1,6 @@
 require "mapbox_directions/version"
 require "mapbox_directions/parametizer"
+require "mapbox_directions/response_parser"
 require "mapbox_directions/client"
 
 module MapboxDirections

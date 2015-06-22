@@ -1,6 +1,7 @@
 require "faraday"
 require_relative "./parametizer"
 require_relative "./model"
+require_relative "./response_parser"
 
 module MapboxDirections
   class Client
@@ -12,10 +13,24 @@ module MapboxDirections
     end
 
     def directions
-      Faraday.get(directions_url, parametizer.params_hash)
+      response = Faraday.get(directions_url, parametizer.params_hash)
+      parse_response(response)
     end
 
     private
+
+    def parse_response(response)
+      body = JSON.parse(response.body)
+
+      case response.status
+      when 200
+        ResponseParser.directions(body)
+      when 401
+        raise InvalidAccessTokenError
+      else
+        Response.new(error: body["message"])
+      end
+    end
 
     def directions_url
       "#{BASE_URL}#{PATH}/#{parametizer.profile}/#{parametizer.waypoints}.json"

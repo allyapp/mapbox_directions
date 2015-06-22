@@ -39,4 +39,16 @@ RSpec.describe "when calling directions with wrong options" do
       expect { directions }.to raise_error(MapboxDirections::CoordinatesFormatError)
     end
   end
+
+  context "failure response when unauthorized" do
+    let(:directions) do
+      VCR.use_cassette("unauthorized") { MapboxDirections.directions(options) }
+    end
+
+    let(:cassette) { "unauthorized" }
+
+    it "raises an InvalidAccessTokenError exception" do
+      expect { directions }.to raise_error(MapboxDirections::InvalidAccessTokenError)
+    end
+  end
 end

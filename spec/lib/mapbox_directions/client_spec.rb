@@ -11,14 +11,38 @@ RSpec.describe MapboxDirections::Client do
   end
 
   describe "directions" do
+    let(:url) { "http://api.tiles.mapbox.com/v4/directions/#{profile}/#{waypoints}.json" }
     before do
-      allow_any_instance_of(Faraday::Connection).to receive(:run_request)
+      allow_any_instance_of(Faraday::Connection).to receive(:get).with(url, params_hash) { response }
     end
 
-    it "calls with the right url and params returned by Parametizer" do
-      url = "http://api.tiles.mapbox.com/v4/directions/#{profile}/#{waypoints}.json"
-      expect_any_instance_of(Faraday::Connection).to receive(:get).with(url, params_hash)
-      directions
+    context "when it returns 200 as status code" do
+      let(:response) { double(status: 200, body: "{}") }
+      let(:parsed_response) { double(:parsed_response) }
+      before do
+        allow(MapboxDirections::ResponseParser).to receive(:directions) { parsed_response }
+      end
+
+      it "returns the parsed response" do
+        expect(directions).to eq(parsed_response)
+      end
+    end
+
+    context "when it returns 401 as status code" do
+      let(:response) { double(status: 401, body: "{}") }
+
+      it "raises a InvalidAccessTokenError" do
+        expect{ directions }.to raise_error(MapboxDirections::InvalidAccessTokenError)
+      end
+    end
+
+    context "when it returns something else than 200 and 401 as status code" do
+      let(:response) { double(status: 404, body: "{ \"message\": \"Not Found\" }") }
+
+      it "returns a response with the message set" do
+        expect(directions).to be_kind_of(MapboxDirections::Response)
+        expect(directions.error).to eq("Not Found")
+      end
     end
   end
 end

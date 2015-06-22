@@ -2,14 +2,14 @@ require_relative "./route"
 
 module MapboxDirections
   class Response
-    attr_reader :origin, :destination, :waypoints, :routes, :errors
+    attr_reader :origin, :destination, :waypoints, :routes, :error
 
     def initialize(attrs)
       @origin      = attrs[:origin]
       @destination = attrs[:destination]
       @waypoints   = attrs[:waypoints] || []
       @routes      = attrs[:routes] || []
-      @errors      = attrs[:errors]
+      @error       = attrs[:error]
     end
   end
 end
