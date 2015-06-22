@@ -28,7 +28,7 @@ module MapboxDirections
       when 401
         raise InvalidAccessTokenError
       else
-        Response.new(error: body["message"])
+        Response.new(message: body["message"], error: body["error"])
       end
     end
 

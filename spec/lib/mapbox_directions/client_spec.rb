@@ -41,7 +41,7 @@ RSpec.describe MapboxDirections::Client do
 
       it "returns a response with the message set" do
         expect(directions).to be_kind_of(MapboxDirections::Response)
-        expect(directions.error).to eq("Not Found")
+        expect(directions.message).to eq("Not Found")
       end
     end
   end

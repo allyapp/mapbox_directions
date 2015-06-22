@@ -66,7 +66,19 @@ RSpec.describe MapboxDirections::ResponseParser do
     end
 
     describe "message" do
-      let(:body) { { "message" => "No results found", "routes" => [] } }
+      let(:body) { { "message" => "Not found", "routes" => [] } }
+
+      it "is set" do
+        expect(response.message).to eq(body["message"])
+      end
+    end
+
+    describe "error" do
+      let(:body) { { "error" => "Cannot find route between points", "routes" => [] } }
+
+      it "is set" do
+        expect(response.error).to eq(body["error"])
+      end
     end
   end
 end

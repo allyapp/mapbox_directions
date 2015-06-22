@@ -16,7 +16,8 @@ module MapboxDirections
         destination: destination,
         waypoints:   @body["waypoints"],
         routes:      routes,
-        message:     @body["message"]
+        message:     @body["message"],
+        error:       @body["error"]
       )
     end
 
