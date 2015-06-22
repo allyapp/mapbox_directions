@@ -1,7 +1,7 @@
 module MapboxDirections
-  class MapboxDirectionsError < StandardError; end
-  class CoordinatesFormatError < MapboxDirectionsError; end
-  class UnsupportedTransportModeError < MapboxDirectionsError; end
-  class MissingAccessTokenError < MapboxDirectionsError; end
-  class InvalidAccessTokenError < MapboxDirectionsError; end
+  class Error < StandardError; end
+  class CoordinatesFormatError < Error; end
+  class UnsupportedTransportModeError < Error; end
+  class MissingAccessTokenError < Error; end
+  class InvalidAccessTokenError < Error; end
 end

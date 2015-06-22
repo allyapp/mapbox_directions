@@ -26,21 +26,65 @@ Or install it yourself as:
 
 ## Usage
 
+Here's the list of supported parameters and the possible values. Note that parameters that are not optional are required:
+
+- **access_token**: public token provided by MapBox.
+- **mode**: mode of transport applied to process the routing.
+Values: ``driving``, ``cycling``or``walking``.
+- **origin**: origin decimal coordinates where the route starts.
+Format: ``"#{lng},#{lat}"``
+- **destination**: destination decimal coordinates where the route ends.
+Format: ``"#{lng},#{lat}"``
+- **geometry**(optional): format for route geometry.
+Values ``geojson``(default), ``polyline``and ``false`` to omit geometry.
+- **alternatives**(optional): whether to get more than one route as an alternative or not.
+Values: ``true``(default) or ``false`` as a Boolean.
+- **instructions**(optional): format for route instructions.
+Values: ``text``(default) or ``html``.
+
+
 ```ruby
 require "mapbox_directions"
-options = {
+
+parameters = {
   access_token: "<your_access_token>",
   mode:         "driving",       # %w(driving cycling walking)
-  origin:       "-122.42,37.78", # lng,lat
-  destination:  "-77.03,38.91",  # lng,lat
+  origin:       "-122.42,37.78", # "#{lng},#{lat}"
+  destination:  "-77.03,38.91",  # "#{lng},#{lat}"
   geometry:     "polyline",      # %w(polyline geojson false)
-  alternatives: false,           # true | false
+  alternatives: false,           # true or false
   instructions: "text",          # %w(text html)
 }
-MapboxDirections.directions(options)
+MapboxDirections.directions(parameters)
 ```
 
+
+
 ### Exceptions
+
+Exceptions are triggered to give immediate feedback when there's something wrong in the parameters passed that won't allow to get a successful response.
+
+- **``MapboxDirections::MissingAccessTokenError``**: When the access token is not passed in the parameters or its value is ``nil``
+
+
+- **``MapboxDirections::InvalidAccessTokenError``**: When the access token is passed in the parameters but it's invalid
+
+- **``MapboxDirections::CoordinatesFormatError``**: When the decimal coordinates are passed bad formatted given the requirements.
+
+
+- **``MapboxDirections::UnsupportedTransportModeError``**: When the mode of transport is different that the ones that the service supports.
+
+
+If the exception raise is an undesired behaviour in the context where the code is being executed, they can be rescued one by one or all at once follows:
+```ruby
+require "mapbox_directions"
+
+def directions(parameters)
+  MapboxDirections.directions(parameters)
+rescue MapboxDirections::Error
+  # Handle exception
+end
+```
 
 ## Contributing
 
