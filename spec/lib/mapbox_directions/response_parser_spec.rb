@@ -3,8 +3,9 @@ RSpec.describe MapboxDirections::ResponseParser do
   let(:summary)  { "I80 - I 80;I 90" }
   let(:distance) { 4524005 }
   let(:duration) { 163463 }
+  let(:steps)    { double(:steps) }
   let(:body) do
-    {"origin"=> {"type"=> "Feature","geometry"=> {"type"=> "Point","coordinates"=> [-122.420013,37.780094]},"properties"=> {"name"=> "McAllister Street"}},"destination"=> {"type"=>  "Feature","geometry"=> {"type"=> "Point","coordinates"=> [-77.030067,38.91008]},"properties"=> {"name"=> "Logan Circle Northwest"}},"waypoints"=> [],"routes"=> [{"distance"=> distance,"duration"=> duration,"summary"=> summary,"geometry"=> geometry,"steps"=> []}]}
+    {"origin"=> {"type"=> "Feature","geometry"=> {"type"=> "Point","coordinates"=> [-122.420013,37.780094]},"properties"=> {"name"=> "McAllister Street"}},"destination"=> {"type"=>  "Feature","geometry"=> {"type"=> "Point","coordinates"=> [-77.030067,38.91008]},"properties"=> {"name"=> "Logan Circle Northwest"}},"waypoints"=> [],"routes"=> [{"distance"=> distance,"duration"=> duration,"summary"=> summary,"geometry"=> geometry,"steps"=> steps}]}
   end
   let(:response) { described_class.directions(body) }
 
@@ -62,6 +63,10 @@ RSpec.describe MapboxDirections::ResponseParser do
 
       it "geometry" do
         expect(route.geometry).to eq(geometry)
+      end
+
+      it "steps" do
+        expect(route.steps).to eq(steps)
       end
     end
 

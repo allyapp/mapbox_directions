@@ -58,7 +58,30 @@ parameters = {
 MapboxDirections.directions(parameters)
 ```
 
+### Response body
 
+```ruby
+MapboxDirections.directions(parameters)
+```
+
+Will return a ``MapboxDirections::Response`` that will be composed by:
+- **origin**(``MapboxDirections::Location``): Origin location of the route.
+- **destination**(``MapboxDirections::Location``): Destination location of the route.
+- **waypoints**
+- **routes**(``MapboxDirections::Route``): Array of routes returned.
+- **message**: Informative message.
+- **error**: Informative error message.
+
+Every ``MapboxDirections::Location``:
+- **name**
+- **lat**
+- **lng**
+
+Every ``MapboxDirections::Route``:
+- **distance**
+- **duration**
+- **summary**
+- **geometry**
 
 ### Exceptions
 

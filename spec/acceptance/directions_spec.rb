@@ -74,6 +74,10 @@ RSpec.describe "directions" do
         it "geometry" do
           expect(route.geometry).to include("_g|`gA`r|nhFs@cKeEir@aAmOc@mG[sFmBoYiGqy@e@_I[kEoFqv@gDog@aFks@wEqq@U}DeB_ZdYa_@l")
         end
+
+        it "steps is an array with maneuvers" do
+          expect(route.steps.first).to include("maneuver")
+        end
       end
     end
 
