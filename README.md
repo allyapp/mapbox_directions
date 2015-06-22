@@ -72,16 +72,19 @@ Will return a ``MapboxDirections::Response`` that will be composed by:
 - **message**: Informative message.
 - **error**: Informative error message.
 
-Every ``MapboxDirections::Location``:
+Every ``MapboxDirections::Location`` instance contains:
 - **name**
 - **lat**
 - **lng**
 
-Every ``MapboxDirections::Route``:
+``MapboxDirections::Route`` instances are composed by:
 - **distance**
 - **duration**
 - **summary**
 - **geometry**
+- **steps**
+
+For more information about what the values of these attributes contain, please look at the [documentation](https://www.mapbox.com/developers/api/directions/).
 
 ### Exceptions
 
