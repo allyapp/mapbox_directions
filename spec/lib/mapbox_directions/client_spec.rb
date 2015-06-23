@@ -11,7 +11,7 @@ RSpec.describe MapboxDirections::Client do
   end
 
   describe "directions" do
-    let(:url) { "http://api.tiles.mapbox.com/v4/directions/#{profile}/#{waypoints}.json" }
+    let(:url) { "https://api.tiles.mapbox.com/v4/directions/#{profile}/#{waypoints}.json" }
     before do
       allow_any_instance_of(Faraday::Connection).to receive(:get).with(url, params_hash) { response }
     end

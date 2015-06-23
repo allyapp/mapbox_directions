@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?access_token=whatever&alternatives=false&geometry=polyline&instructions=text
+    uri: https://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?access_token=whatever&alternatives=false&geometry=polyline&instructions=text
     body:
       encoding: US-ASCII
       string: ''
@@ -94,4 +94,51 @@ http_interactions:
       string: '{"message":"Invalid Access Token"}'
     http_version: 
   recorded_at: Mon, 22 Jun 2015 08:15:37 GMT
+- request:
+    method: get
+    uri: https://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,38.78;-77.03,38.91.json?access_token=whatever&alternatives=false&geometry=polyline&instructions=text
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.1
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 401
+      message: Unauthorized
+    headers:
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Methods:
+      - GET
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - max-age=0
+      Date:
+      - Tue, 23 Jun 2015 11:35:00 GMT
+      X-Powered-By:
+      - Express
+      Vary:
+      - Accept-Encoding
+      X-Cache:
+      - Error from cloudfront
+      Via:
+      - 1.1 b51cca8830e8b6164d5fc149a6e27443.cloudfront.net (CloudFront)
+      X-Amz-Cf-Id:
+      - OVWVjGiTRPeXOxZ9fWVesiddxigu5ruGFT90oGID8BgODajpo-pieg==
+    body:
+      encoding: UTF-8
+      string: '{"message":"Invalid Access Token"}'
+    http_version: 
+  recorded_at: Tue, 23 Jun 2015 11:35:00 GMT
 recorded_with: VCR 2.9.3

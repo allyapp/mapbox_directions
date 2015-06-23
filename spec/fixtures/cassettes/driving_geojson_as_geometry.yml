@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?alternatives=false&geometry=geojson&instructions=text
+    uri: https://api.tiles.mapbox.com/v4/directions/mapbox.driving/-122.42,37.78;-77.03,38.91.json?alternatives=false&geometry=geojson&instructions=text
     body:
       encoding: US-ASCII
       string: ''

@@ -5,7 +5,7 @@ require_relative "./response_parser"
 
 module MapboxDirections
   class Client
-    BASE_URL = "http://api.tiles.mapbox.com"
+    BASE_URL = "https://api.tiles.mapbox.com"
     PATH     = "/v4/directions"
 
     def initialize(options)
