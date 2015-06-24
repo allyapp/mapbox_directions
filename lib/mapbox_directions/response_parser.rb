@@ -24,20 +24,11 @@ module MapboxDirections
     private
 
     def origin
-      location(@body["origin"]) if @body["origin"]
+      Location.from_geojson(@body["origin"]) if @body["origin"]
     end
 
     def destination
-      location(@body["destination"]) if @body["destination"]
-    end
-
-    def location(location)
-      coordinates = location["geometry"]["coordinates"]
-      Location.new(
-        lat:  coordinates.last,
-        lng:  coordinates.first,
-        name: location["properties"]["name"]
-      )
+      Location.from_geojson(@body["destination"]) if @body["destination"]
     end
 
     def routes
