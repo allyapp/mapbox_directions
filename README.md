@@ -72,17 +72,37 @@ Will return a ``MapboxDirections::Response`` that will be composed by:
 - **message**: Informative message.
 - **error**: Informative error message.
 
-Every ``MapboxDirections::Location`` instance contains:
+``MapboxDirections::Location``:
 - **name**
 - **lat**
 - **lng**
 
-``MapboxDirections::Route`` instances are composed by:
+``MapboxDirections::Route``:
 - **distance**
 - **duration**
 - **summary**
 - **geometry**
-- **steps**
+- **steps**(``Array[MapboxDirections::Step]``)
+
+``MapboxDirections::Step``:
+- **distance**
+- **duration**
+- **way_name**
+- **direction**
+- **heading**
+- **maneuver**(``MapboxDirections::Maneuver``)
+- Methods:
+  - **lat**: Latitude of the maneuver point.
+  - **lng**: Longitude of the maneuver point.
+
+``MapboxDirections::Maneuver``:
+  - **type**
+  - **location**
+  - **instruction**
+  - Methods:
+    - **lat**: Latitude of the maneuver point.
+    - **lng**: Longitude of the maneuver point.
+
 
 For more information about what the values of these attributes contain, please look at the [documentation](https://www.mapbox.com/developers/api/directions/).
 
