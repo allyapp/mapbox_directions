@@ -83,6 +83,12 @@ Will return a ``MapboxDirections::Response`` that will be composed by:
 - **summary**
 - **geometry**
 - **steps**(``Array[MapboxDirections::Step]``)
+- Methods:
+  - **transform_polyline_precision(precision = 1e5)**: When geometry is polyline, polyline representation format are built with precision 6 (``1e6``).
+  In order to get the polyline string transformed into another precision use this method passing the desired precision, which by default is 5 ``1e5``.
+  To know more about how polyline are built from coordinates:
+  https://developers.google.com/maps/documentation/utilities/polylinealgorithm
+
 
 ``MapboxDirections::Step``:
 - **distance**
