@@ -4,6 +4,9 @@ Bundler.setup
 require 'mapbox_directions'
 require 'vcr'
 
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/cassettes'
   c.hook_into :webmock
