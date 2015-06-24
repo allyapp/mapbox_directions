@@ -39,9 +39,31 @@ module MapboxDirections
           duration: route["duration"],
           summary:  route["summary"],
           geometry: route["geometry"],
-          steps:    route["steps"]
+          steps:    steps(route["steps"])
         )
       end
+    end
+
+    def steps(steps)
+      steps.map do |step|
+        Step.new(
+          distance:  step["distance"],
+          duration:  step["duration"],
+          way_name:  step["way_name"],
+          direction: step["direction"],
+          heading:   step["heading"],
+          maneuver:  maneuver(step["maneuver"])
+        )
+      end
+    end
+
+    def maneuver(maneuver)
+      coordinates = maneuver["location"]["coordinates"]
+      Maneuver.new(
+        type:        maneuver["type"],
+        location:    Point.new(coordinates.last, coordinates.first),
+        instruction: maneuver["instruction"]
+      )
     end
   end
 end

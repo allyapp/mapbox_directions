@@ -75,8 +75,57 @@ RSpec.describe "directions" do
           expect(route.geometry).to include("_g|`gA`r|nhFs@cKeEir@aAmOc@mG[sFmBoYiGqy@e@_I[kEoFqv@gDog@aFks@wEqq@U}DeB_ZdYa_@l")
         end
 
-        it "steps is an array with maneuvers" do
-          expect(route.steps.first).to include("maneuver")
+        describe "steps" do
+          let(:steps) { route.steps }
+
+          it "is an array with step elements" do
+            expect(steps.count).to be > 0
+            expect(steps.first).to be_kind_of(MapboxDirections::Step)
+          end
+
+          describe "each step contains" do
+            let(:step) { steps.first }
+
+            it "distance" do
+              expect(step.distance).to eq(611)
+            end
+
+            it "duration" do
+              expect(step.duration).to eq(53)
+            end
+
+            it "way_name" do
+              expect(step.way_name).to eq("McAllister Street")
+            end
+
+            it "direction" do
+              expect(step.direction).to eq("E")
+            end
+
+            it "heading" do
+              expect(step.heading).to eq(80)
+            end
+
+            it "lat" do
+              expect(step.lat).to eq(37.780096)
+            end
+
+            it "lng" do
+              expect(step.lng).to eq(-122.420017)
+            end
+
+            describe "maneuver" do
+              let(:maneuver) { step.maneuver }
+
+              it "type" do
+                expect(maneuver.type).to eq("depart")
+              end
+
+              it "instruction" do
+                expect(maneuver.instruction).to eq("Head east on McAllister Street")
+              end
+            end
+          end
         end
       end
     end
