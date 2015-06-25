@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/allyapp/mapbox_directions.svg?branch=master)](https://travis-ci.org/allyapp/mapbox_directions)
 [![Code Climate](https://codeclimate.com/github/allyapp/mapbox_directions/badges/gpa.svg)](https://codeclimate.com/github/allyapp/mapbox_directions)
+[![Test Coverage](https://codeclimate.com/github/allyapp/mapbox_directions/badges/coverage.svg)](https://codeclimate.com/github/allyapp/mapbox_directions/coverage)
 
 Ruby wrapper for the MapBox Directions Service.
 
