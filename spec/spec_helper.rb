@@ -10,6 +10,7 @@ require 'vcr'
 VCR.configure do |c|
   c.cassette_library_dir = 'spec/fixtures/cassettes'
   c.hook_into :webmock
+  c.ignore_hosts 'codeclimate.com'
   c.default_cassette_options = {
     match_requests_on: [:method, VCR.request_matchers.uri_without_param(:access_token), :body],
     record:            :new_episodes
