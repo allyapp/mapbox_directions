@@ -59,7 +59,7 @@ parameters = {
 MapboxDirections.directions(parameters)
 ```
 
-### Response body
+### Response object instance
 
 ```ruby
 MapboxDirections.directions(parameters)
