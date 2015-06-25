@@ -31,17 +31,23 @@ Here's the list of supported parameters and the possible values. Note that param
 
 - **access_token**: public token provided by MapBox.
 - **mode**: mode of transport applied to process the routing.
-Values: ``driving``, ``cycling``or``walking``.
+
+    Values: ``driving``, ``cycling``or``walking``.
 - **origin**: origin decimal coordinates where the route starts.
-Format: ``"#{lng},#{lat}"``
+
+    Format: ``"#{lng},#{lat}"``
 - **destination**: destination decimal coordinates where the route ends.
-Format: ``"#{lng},#{lat}"``
+
+    Format: ``"#{lng},#{lat}"``
 - **geometry**(optional): format for route geometry.
-Values ``geojson``(default), ``polyline``and ``false`` to omit geometry.
+
+    Values ``geojson``(default), ``polyline``and ``false`` to omit geometry.
 - **alternatives**(optional): whether to get more than one route as an alternative or not.
-Values: ``true``(default) or ``false`` as a Boolean.
+
+    Values: ``true``(default) or ``false`` as a Boolean.
 - **instructions**(optional): format for route instructions.
-Values: ``text``(default) or ``html``.
+
+    Values: ``text``(default) or ``html``.
 
 
 ```ruby
@@ -69,7 +75,7 @@ Will return a ``MapboxDirections::Response`` that will be composed by:
 - **origin**(``MapboxDirections::Location``): Origin location of the route.
 - **destination**(``MapboxDirections::Location``): Destination location of the route.
 - **waypoints**
-- **routes**(``MapboxDirections::Route``): Array of routes returned.
+- **routes**(``MapboxDirections::Route``): Array of routes.
 - **message**: Informative message.
 - **error**: Informative error message.
 
@@ -86,12 +92,10 @@ Will return a ``MapboxDirections::Response`` that will be composed by:
 - **steps**(``Array[MapboxDirections::Step]``)
 - Methods:
   - **transform_polyline_precision(precision = 1e5)**
-  
-    When geometry is polyline, polyline representation format are built with precision 6 (``1e6``).
-
+    When geometry is polyline, polyline representation format are built with precision 6 ``1e6``.
     In order to get the polyline string transformed into another precision use this method passing the desired precision, which by default is 5 ``1e5``.
 
-  To know more about how polyline are built from coordinates:
+  To know more about how the algorithm that builds polylines from coordinates:
   https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 
 
