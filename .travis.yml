@@ -1,9 +1,6 @@
-script: bundle exec rspec
+script: CODECLIMATE_REPO_TOKEN=5e7eb3ca9f5744cce3649045cd4887324323c2ffc7b6b3a3be7de1bbb064ddbf bundle exec rspec
 language: ruby
 cache: bundler
-addons:
-  code_climate:
-    repo_token: 5e7eb3ca9f5744cce3649045cd4887324323c2ffc7b6b3a3be7de1bbb064ddbf
 rvm:
 - 2.0.0
 - 2.1.0
